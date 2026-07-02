@@ -1,0 +1,92 @@
+{
+  "schema": "lab-selection/1",
+  "stand": "2026-06-15",
+  "design": "coverage",
+  "beschreibung": "Kriteriengeleitete, purposive Auswahl der Lab-Traeger-Anforderungen zur Abdeckung des Ergebnisraums (5 Ergebnisklassen). Pruefeinheit = gewerteter B-Satz im Verbund mit konstruiertem Referenzzustand, nicht die Anforderung als Ganzes. Ablauf-Mapping im Methodikkapitel der Arbeit.",
+  "cluster_module": {
+    "docker": ["SYS.1.1", "SYS.1.3", "SYS.1.6"],
+    "virt": ["SYS.1.5"],
+    "client": ["SYS.2.1", "SYS.2.3"]
+  },
+  "funnel": [
+    {
+      "stufe": 1,
+      "name": "Ausgangsmenge",
+      "einheit": "interpretationsbeduerftige (B) Saetze der Cluster-Module als Ausgangsmenge der Kuration",
+      "notiz": "Kandidatenraum fuer die kriteriengeleitete Auswahl; keine repraesentative Grundgesamtheit."
+    },
+    {
+      "stufe": 2,
+      "name": "Machbarkeitsfilter",
+      "einheit": "SSH-pruefbare Kandidaten nach Ausschluss nicht-laborfaehiger Pruefobjekte",
+      "verfahren": "kurativ je Item; Ausschlussgruende siehe unten",
+      "ausschlussgruende": [
+        "Primaerverweis auf andere Schicht (INF, ORP, OPS)",
+        "physisch-raeumliches Pruefobjekt",
+        "Pruefobjekt ausserhalb der drei Cluster",
+        "doku-/handbuch-gebundene Evidenz",
+        "Planung/Konzept, Policy-Verabschiedung, Prozess, Beschaffung, Monitoring-Infrastruktur, Multi-Host/Architektur"
+      ],
+      "explizit_ausgeschlossen_beispiele": ["SYS.1.5.A9", "SYS.1.1.A12", "SYS.2.1.A40", "SYS.1.1.A11", "SYS.1.5.A19", "SYS.1.1.A13", "SYS.1.1.A23", "SYS.1.1.A28"]
+    },
+    {
+      "stufe": 3,
+      "name": "Kuration entlang Szenario-Matrix",
+      "n": 8,
+      "einheit": "Items (Ergebnisklasse x Traeger), 6 distinkte Anforderungen",
+      "verfahren": "Zuordnung je Item zu genau einer Ergebnisklasse; Replikationsschwerpunkt auf den strittigen Ergebnisklassen 3-5 (1/1/2/2/2)",
+      "regel": "Ergebnisklasse wird gezielt gestreut, nicht gefiltert (sonst Selektion auf das Ergebnis). Lab-Machbarkeit darf filtern, die Ergebnisklasse nicht."
+    },
+    {
+      "stufe": 4,
+      "name": "Einzelfall-Validierung",
+      "status": "offen zum Stand dieser Ziehung; erfolgte anschliessend bei der Fall-Konstruktion im Lab-Repo (grundschutz-agent-lab)",
+      "verfahren": "je finales Item: B-Status nach Schema v2 bestaetigen, Plausibilitaet von Cluster- und Klassenzuordnung pruefen, konstruierten Zielzustand gegenlesen. Nicht standhaltende Items werden ersetzt (gleiche Ergebnisklasse, gleiches Cluster), Ersatz hier protokolliert.",
+      "ersetzungen": []
+    }
+  ],
+  "replikation": {"ergebnisklasse_1": 1, "ergebnisklasse_2": 1, "ergebnisklasse_3": 2, "ergebnisklasse_4": 2, "ergebnisklasse_5": 2, "k_pro_item": 4},
+  "fallzahl_groessenordnung": "8 Items x 5 Ergebnisklassen-Abdeckung x k=4, plus konform/nicht-konform-Zustaende wo zutreffend => ca. 50-70 Einzellaeufe",
+  "version": "v2 container-treu (2026-06-16, nach Pilot Stufe 2)",
+  "items": [
+    {"item_id": 1, "ergebnisklasse": "1_sauber_konform",        "requirement_id": "SYS.2.1.A18", "gewerteter_b_satz": "SYS.2.1.A18.S02", "cluster": "linux-client", "soll_urteil": "konform"},
+    {"item_id": 2, "ergebnisklasse": "2_sauber_nicht_konform",  "requirement_id": "SYS.2.1.A18", "gewerteter_b_satz": "SYS.2.1.A18.S02", "cluster": "linux-client", "soll_urteil": "nicht_konform"},
+    {"item_id": 3, "ergebnisklasse": "3_zu_komplex",            "requirement_id": "SYS.1.1.A2",  "gewerteter_b_satz": "SYS.1.1.A2.S01",  "cluster": "linux-server", "soll_urteil": "nicht_konform"},
+    {"item_id": 4, "ergebnisklasse": "3_zu_komplex",            "requirement_id": "SYS.1.1.A33", "gewerteter_b_satz": "SYS.1.1.A33.S02", "cluster": "linux-server", "soll_urteil": "konform"},
+    {"item_id": 5, "ergebnisklasse": "4_fehlende_berechtigung", "requirement_id": "SYS.2.3.A1",  "gewerteter_b_satz": "SYS.2.3.A1.S02",  "cluster": "linux-client", "soll_urteil": "nicht_verifizierbar", "status": "pilot-validiert (ersetzt SYS.1.3.A17)"},
+    {"item_id": 6, "ergebnisklasse": "4_fehlende_berechtigung", "requirement_id": "SYS.1.1.A2",  "gewerteter_b_satz": "SYS.1.1.A2.S01",  "cluster": "linux-server", "soll_urteil": "nicht_verifizierbar", "facette": "Credential-Speicherung (/etc/shadow), abweichend von Item 3 (lokale Auth-Policy)"},
+    {"item_id": 7, "ergebnisklasse": "5_nicht_entscheidbar",    "requirement_id": "SYS.1.1.A39", "gewerteter_b_satz": "SYS.1.1.A39.S01", "cluster": "linux-server", "soll_urteil": "nicht_verifizierbar"},
+    {"item_id": 8, "ergebnisklasse": "5_nicht_entscheidbar",    "requirement_id": "SYS.1.1.A19", "gewerteter_b_satz": "SYS.1.1.A19.S02", "cluster": "linux-server", "soll_urteil": "nicht_verifizierbar"}
+  ],
+  "zweitkodierung": {
+    "status": "offen",
+    "umfang": "Teilmenge der Klassenzuordnungen zweitkodieren (ersetzt fruehere B1/B2/B3-Zweitkodierung)",
+    "art": "qualitativ, kein Kappa"
+  },
+  "externe_plausibilisierung": {
+    "status": "offen",
+    "kern_items": [3, 5, 7],
+    "gegenstand": "Tripel aus Anforderungslesart + engineertem Zielzustand + pre-committetem Soll-Urteil; Face-Validity, qualitativ (DZ1)"
+  },
+  "pilot_stufe_2": {
+    "stand": "2026-06-16",
+    "ergebnis": "v2-Maschinerie validiert (dreiwertig, generische Varianten, szenario-sudoers, Preflight, DZ2-Isolation 0 Leakage). Ergebnisklasse-4-Abstinenz container-treu bewiesen.",
+    "validierter_cell4_traeger": "SYS.2.3.A1 (sudo-Policy root-only): locked -> nicht_verifizierbar (PASS), readable -> konform (PASS), Diskriminierung bewiesen.",
+    "verworfen": {
+      "SYS.1.3.A17": "Container teilt Host-Kernel; uname welt-lesbar zeigt Stock-Kernel -> Agent urteilt korrekt nicht_konform statt nicht_verifizierbar.",
+      "SYS.2.1.A45": "Logging ist Laufzeit-Dienst; bare-container ohne Daemon -> Agent urteilt korrekt nicht_konform; statische root-only Policy wirkungslos ohne Daemon."
+    },
+    "artefakte": "grundschutz-agent-lab/runs/SYS.2.3.A1__*/ und runs/*/FINDING.md"
+  },
+  "container_fidelity_rescope": {
+    "status": "umgesetzt (2026-06-16)",
+    "entscheidung": "Target bleibt bare-container; Carrier strikt auf container-treu (sshd/PAM/Datei/Paket/sudo/Trust-Store-Konfig) verengt.",
+    "ersetzungen_v1_zu_v2": {
+      "Z1/Z2": "SYS.2.3.A14 (Device-Control, lsmod=Host) -> SYS.2.1.A18 (SSH-Krypto, sshd -T)",
+      "Z3": "SYS.1.5.A2 (Virt) + SYS.1.1.A6 (Dienste) -> SYS.1.1.A2 (Auth-Policy-Synthese) + SYS.1.1.A33 (Trust-Store-Synthese)",
+      "Z4": "SYS.1.3.A17 (Kernel) + SYS.2.1.A45 (auditd) -> SYS.2.3.A1 (sudo, validiert) + SYS.1.1.A2 (shadow/Credential)",
+      "Z5": "SYS.1.5.A22 (Host) + SYS.1.6.A5 (Container-Netz) -> SYS.1.1.A39 (zentrales Mgmt) + SYS.1.1.A19 (Remote-Identitaet/Trust-Anker)"
+    },
+    "methodik_implikation": "Cluster-Struktur kollabiert auf Linux-Server/Client-Konfigauditing; Virtualisierungs-Cluster entfaellt. Validitaetsperimeter im Methodikkapitel der Arbeit entsprechend erweitert: bewertet wird der CONTAINER-pruefbare Anteil der B-Klasse; Host-/Kernel-/Laufzeitdienst-/Virtualisierungsebene ausserhalb des Perimeters. Hinweis: container-treuer ∩ B ∩ SYS-Raum ist schmal -> Set stuetzt sich auf wenige Anforderungen (v.a. SYS.1.1.A2 in zwei Facetten)."
+  }
+}

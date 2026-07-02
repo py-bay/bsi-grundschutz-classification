@@ -1,0 +1,10 @@
+[project]
+name = "bsi-grundschutz-classification"
+version = "0.3.0"
+description = "Deduktive A/B/C-Prüfbarkeitsklassifikation der BSI SYS-Anforderungen: Schema, Kodierung, Adjudikation, Interkoderreliabilität und Lab-Auswahl."
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = []
+
+[tool.uv]
+package = false

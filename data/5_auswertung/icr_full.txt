@@ -1,0 +1,44 @@
+$ uv run python scripts/build_human_consensus.py
+Wrote /home/sim/Projects/bsi-grundschutz-classification/data/5_auswertung/konsens.csv: agreed=28 adjudicated=19 needs_review=3 missing=0
+
+$ uv run python scripts/compute_icr.py data/3_kodierung/coder_autor.csv data/3_kodierung/coder_zweitkodierer.csv
+Verglichen werden 50 units; Codierer: autor, zweitkodierer
+
+[autor vs. zweitkodierer]  raw agreement = 0.560   Cohen's kappa = 0.305
+
+  Konfusionsmatrix: autor (Zeile) vs. zweitkodierer (Spalte)
+         A    B    C
+   A |    2    7    1
+   B |    0   10    3
+   C |    2    9   16
+
+[Fleiss' kappa, 2 Codierer]  kappa = 0.276
+
+$ uv run python scripts/compute_icr.py data/3_kodierung/coder_autor.csv data/3_kodierung/coder_zweitkodierer.csv data/5_auswertung/konsens.csv
+Verglichen werden 47 units; Codierer: autor, zweitkodierer, konsens
+
+[autor vs. zweitkodierer]  raw agreement = 0.596   Cohen's kappa = 0.348
+
+  Konfusionsmatrix: autor (Zeile) vs. zweitkodierer (Spalte)
+         A    B    C
+   A |    2    6    1
+   B |    0   10    3
+   C |    1    8   16
+
+[autor vs. konsens]  raw agreement = 0.723   Cohen's kappa = 0.547
+
+  Konfusionsmatrix: autor (Zeile) vs. konsens (Spalte)
+         A    B    C
+   A |    4    4    1
+   B |    0   11    2
+   C |    0    6   19
+
+[zweitkodierer vs. konsens]  raw agreement = 0.851   Cohen's kappa = 0.737
+
+  Konfusionsmatrix: zweitkodierer (Zeile) vs. konsens (Spalte)
+         A    B    C
+   A |    2    1    0
+   B |    2   19    3
+   C |    0    1   19
+
+[Fleiss' kappa, 3 Codierer]  kappa = 0.533
