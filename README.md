@@ -92,11 +92,11 @@ strukturierenden Inhaltsanalyse nach Kuckartz & Rädiker 2022):
 - `konsens.csv` — Goldreferenz: `human_consensus` je Satz-Einheit
 - `icr_full.txt` — Roh-Output beider ICR-Läufe (pre- und post-Adjudikation)
 
-| Vergleich                     | n  | raw agreement | Cohens κ |
-|-------------------------------|----|---------------|----------|
-| Autor vs. Zweitkodierer (pre) | 50 | 0,560         | 0,305    |
-| Autor vs. Konsens (post)      | 47 | 0,723         | 0,547    |
-| Zweitkodierer vs. Konsens (post) | 47 | 0,851      | 0,737    |
+| Vergleich                        | n  | raw agreement | Cohens κ |
+|----------------------------------|----|---------------|----------|
+| Autor vs. Zweitkodierer (pre)    | 50 | 0,560         | 0,305    |
+| Autor vs. Konsens (post)         | 47 | 0,723         | 0,547    |
+| Zweitkodierer vs. Konsens (post) | 47 | 0,851         | 0,737    |
 
 Fleiss' κ: 0,276 (pre, beide Kodierer), 0,533 (post, inkl. Konsens). Es
 wird bewusst kein fester Kappa-Zielwert gesetzt: Die Klassifikation ist
@@ -156,3 +156,4 @@ unterliegen dessen Nutzungsbedingungen.
 ## Lizenz
 
 MIT (nur der Code — nicht die BSI-Inhalte, siehe Datenquelle).
+
