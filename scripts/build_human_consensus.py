@@ -112,6 +112,7 @@ def main() -> None:
             n_missing += 1
 
     out_p = root / "data/5_auswertung/konsens.csv"
+    out_p.parent.mkdir(parents=True, exist_ok=True)
     with out_p.open("w", encoding="utf-8", newline="") as f:
         w = csv.DictWriter(f, fieldnames=out_fields)
         w.writeheader()

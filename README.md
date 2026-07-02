@@ -138,6 +138,14 @@ uv run python scripts/compute_icr.py data/3_kodierung/coder_autor.csv data/3_kod
 Die erwartete Ausgabe liegt eingefroren in `data/5_auswertung/icr_full.txt`;
 `konsens.csv` wird von `build_human_consensus.py` identisch neu erzeugt.
 
+Tests — verifizieren die Kappa-Berechnung gegen handgerechnete Beispiele
+aus der Primärliteratur (Cohen 1960; Fleiss 1971; Scott 1955), die
+Konsens-Regeln und die eingefrorenen Ergebnisse:
+
+```bash
+uv run python -m unittest discover tests
+```
+
 ## Datenquelle
 
 Die Anforderungstexte in `data/` stammen aus dem

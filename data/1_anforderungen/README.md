@@ -23,7 +23,6 @@ selbst liegt nicht hier, sondern in `../3_kodierung/` bis
 - `module_id`, `module_name`, `title`: Baustein-Zuordnung der Anforderung.
 - `level`, `level_label`: Schutzbedarfsstufe (B/S/H).
 - `roles`: zustaendige Rollen laut Baustein, sofern angegeben.
-- `is_deprecated`: entfallene Anforderung — in dieser Datei durchgaengig
-  `False`, da entfallene Anforderungen bei der Extraktion ausgeschlossen wurden.
+- `is_deprecated`: entfallene Anforderung — in dieser Datei durchgaengig `False`, da entfallene Anforderungen bei der Extraktion ausgeschlossen wurden.
 - `sentence_text`: der einzelne Satz (Klassifikationseinheit).
 - `requirement_text`: vollstaendige Anforderung als Kontext.
